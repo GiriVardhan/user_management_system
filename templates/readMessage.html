@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      body {
+        background-color: lightcyan;
+      }
+
+      p {
+        font-style: oblique;
+        font-size: xx-large;
+      }
+
+      li {
+        font-size: xx-large;
+      }
+
+      .button {
+        background-color:darkcyan;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      } 
+
+      label {
+        display: inline-block;
+        width: 120px;
+        text-align: left;
+        font-style: italic;
+}​
+    </style>
+  </head>
+  <body>
+    <div style="text-align: right;">
+			<br><br>
+			<button class="button"><a style="text-decoration: none; font-size: 1em;color: ivory;" href="/dashboard">Goto Dashboard</a></button>&nbsp;&nbsp;
+                        <button class="button"><a style="text-decoration: none; font-size: 1em;color: ivory;" href="/viewMessages">View Messages</a></button>  
+
+		</div>
+<br /><br />
+     <div style="text-align: center;">
+        {{range .MsgList}}
+         <table bgcolor=darkcyan align=center valign=middle width=800px hight=auto><tr><td width=200px align=right ><font color=ivory>Message Subject :</font></td><td align=left><font color=ivory>{{.Msg_Header}}</td></tr>
+            <tr><td width=200px align=right><font color=ivory>Message From :</td><td align=left><font color=ivory>{{.Msg_From}}</font></td></tr>
+           <tr><td width=200px align=right valign=top><font color=ivory>Message :</td><td align=justify><font color=ivory>{{.Msg_Text}}</font></td></tr>
+
+        {{end}} 
+
+       
+     </div> 
+    </body>
+</html>
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+      body {
+        background-color: lightcyan;
+      }
+
+      p {
+        font-style: oblique;
+        font-size: xx-large;
+        color: white;
+        background-color:darkcyan;
+      }
+
+      .button {
+        background-color:darkcyan;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      }
+
+      .button1 {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: darkcyan;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      }
+
+      .button2 {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: darkcyan;
+        border: none;
+        color: white;
+        width : 250px;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      }
+      
+      button:hover {
+        opacity: 0.8;
+      }
+
+      A {
+        text-decoration: none;
+        font-size: 1.5em;
+        color: ivory;
+      }
+
+      .title {
+        color: red;
+        padding: 10px;
+        height: auto;
+        text-align: center;
+        width: 350px;
+      }
+
+      .container { 
+        width:1000px; 
+        height:600px; 
+        padding-top:20px; 
+        padding-left:15px; 
+        padding-right:15px; 
+        align-content: center;
+      } 
+
+      #st-box { 
+        float:left; 
+        width:43%; 
+        height: 600px; 
+        color: white;
+        background-color:darkcyan; 
+      } 
+    
+      #nd-box { 
+        float:left; 
+        width:34%; 
+        height: 600px; 
+        background-color:darkcyan; 
+      } 
+
+      #space { 
+        float:left; 
+        width:15%; 
+        height:600px; 
+        background-color:darkcyan; 
+      }  
+
+      ul {
+        list-style-type: none;
+        width: auto;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        padding: 8px 16px;
+        text-decoration: none;
+        font-size:20px;
+        font-style: italic;
+        margin: 1em 0;;
+      }   
+
+      li a:hover {
+        background-color: thistle;
+      }  
+
+      A {
+        text-decoration: none;
+        font-size: 1.5em;
+        color: ivory;
+      }
+    </style>
+</head>
+<body>
+  <center>  
+      <div style="text-align: right;">
+        <br>
+        <button class="button"><a href="/logout">Logout</a></button>&nbsp;&nbsp;
+      </div>   
+      <div class="title" style="text-align: center;">
+          <p>Manager Dashboard</p>
+      </div>   
+      <div class="container"> 
+          <div id="st-box"> 
+              <p>Manager Profile</p>
+              <h3>User ID: {{.UserID}} </h3>
+              <h3>First Name: {{.FirstName}} </h3>
+              <h3>Last Name: {{.LastName}} </h3>
+              <h3>Email ID: {{.Email}} </h3><br /><br /><br />
+              <button class="button1"><a color="blue" href="/updateProfile">Update Profile</a></button> 
+
+          </div> 
+          <div id="space"></div>
+          <div id="nd-box"> <br>
+            <ul>
+              <button class="button2"><a href="/registration">User Registration</a></button>
+              <button class="button2"><a href="/viewDeleteUsers">View/Delete Users</a></button>
+              <button class="button2"><a href="/listUsersUnderHim">List users under Manager</a></button>
+              <button class="button2"><a href="/viewListOtherManagers">View list of other Managers</a></button>
+              <button class="button2"><a color="blue" href="/viewMessages">View Messages</a></button>
+            </ul>
+          </div> 
+      </div> 
+    </center> 
+</body>
+</html>

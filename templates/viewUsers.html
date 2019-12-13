@@ -1,0 +1,113 @@
+<html>
+	<style>
+		body {
+			background-color: lightcyan;
+		}
+
+		p {
+			font-style: oblique;
+			font-size: xx-large;
+		}
+
+		.button {
+			background-color:darkcyan;
+			border: none;
+			color: white;
+			padding: 12px 26px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 13px;
+			margin: 4px 2px;
+			cursor: pointer;
+			font-style: italic;
+		}
+
+		button:hover {
+			opacity: 0.8;
+		}
+
+
+		input[type=text], input[type=password] {
+			width: 30%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		
+		A {
+			text-decoration: none;
+			font-size: 1.2em;
+			color: ivory;
+		}
+
+		label {
+			display: inline-block;
+			width: 120px;
+			text-align: left;
+			font-style: italic;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 70%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: center;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}	
+
+		.blink {
+			animation: blinker 2.5s linear infinite;
+			color: red;
+			font-family: sans-serif;
+			font-size: 1.4em;
+		}
+
+		@keyframes blinker {  
+			50% { opacity: 0; }
+		}
+	</style>
+    <body>
+        <div style="text-align: right;">
+		<br><br>
+        	<button class="button"><a href="/dashboard">Goto Dashboard</a></button>&nbsp;&nbsp;
+	</div>
+	<div style="text-align: center;">
+		<p>View/ Delete Users</p>
+		<form method="POST">
+			<table align="center">
+				<tr>
+					<br><br>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email ID</th>
+					<th>User Id</th>
+					<th>Action</th>
+				</tr>
+				{{range .Users}}
+					<tr>
+						<td>{{.FirstName}}</td>
+						<td>{{.LastName}}</td>
+						<td>{{.Email}}</td>
+						<td>{{.UserId}}</td>
+						<td><button type="submit" class="button" value="{{.UserId}}" name="userId"  id="userId" onclick="return confirm('Are you sure you want to delete?');"><a style="text-decoration: none; font-size: 1.3em;color: ivory;">Delete</a></button></td>
+					</tr>
+				{{end}}    
+			</table>
+		</form>
+		{{if .IsShow}} 
+			<p class="blink">{{.SuccessMessage}}</p>
+		{{end}}
+	</div>
+    </body>
+</html>

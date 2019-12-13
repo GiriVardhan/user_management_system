@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      body {
+        background-color: lightcyan;
+      }
+
+      p {
+        font-style: oblique;
+        font-size: xx-large;
+      }
+
+      li {
+        font-size: xx-large;
+      }
+
+      .button {
+        background-color:darkcyan;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      } 
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      label {
+        display: inline-block;
+        width: 120px;
+        text-align: left;
+        font-style: italic;
+      }
+      
+      .blink {
+        animation: blinker 2.5s linear infinite;
+        color: red;
+        font-family: sans-serif;
+        font-size: 1.4em;
+      }
+
+      @keyframes blinker {  
+        50% { opacity: 0; }
+      }​
+  </style>
+  </head>
+  <body>
+    <div style="text-align: right;">
+      <br><br>
+      <button class="button"><a style="text-decoration: none; font-size: 1em;color: ivory;" href="/dashboard">Goto Dashboard</a></button>
+      <button class="button"><a style="text-decoration: none; font-size: 1em;color: ivory;" href="/logout">Logout</a></button>  
+    </div>
+
+     <div style="text-align: center;">
+        <p>Compose Message</p>
+            <form method="POST">
+              <table align=center ><tr><td >
+                 Message Header : </td>
+                <td align=left><input type="text" name="msg_header" required><br></td></tr>
+                  <tr><td align=right>
+                 Message To : </td><td align=left>
+                  <select name="managers"  id="managers" required class="form-control"> 
+                        <option value="Select" >Select</option>
+                        <option value="All Users" >All Mangers & Users</option>
+                    {{range .Managers}}
+                        
+                       <option value="{{.UserId}}" >{{ .FirstName}} {{.LastName}}</option>
+                    {{end}}
+                  </select><br></td></tr>
+                <tr><td valign=top align=right>Message Text: </td>
+                <td><textarea name="msg_text" rows="20" cols="50">Type your message here...</textarea><br><br></td></tr></table>
+                <button class="button" type="submit"><a style="text-decoration: none; font-size: 1em;color: ivory;">Send</a></button>
+            </form>
+        {{if .IssueMsg}}
+          <p class="blink">{{.IssueMsg}}</p>
+        {{end}} 
+        {{ if .SuccessMessage}}
+          <p class="blink"> {{.SuccessMessage}} </p>
+        {{end}}
+              <p class="blink">{{.SelectMessage}}</p>
+     </div> 
+    </body>
+</html>

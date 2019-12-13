@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      body {
+        background-color: lightcyan;
+      }
+
+      p {
+        font-style: oblique;
+        font-size: xx-large;
+      }
+
+      li {
+        font-size: xx-large;
+      }
+
+      .button {
+        background-color:darkcyan;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-style: italic;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .row-centered {
+        text-align:center;
+        }
+    
+      .col-centered {
+        display:inline-block;
+        float:none;
+        /* reset the text-align */
+        text-align:left;
+        /* inline-block space fix */
+        /*margin-right:-4px; */
+        text-align: center;
+      }
+
+      .blink {
+        animation: blinker 2.5s linear infinite;
+        color: red;
+        font-family: sans-serif;
+        font-size: 1.4em;
+      }
+
+      @keyframes blinker {  
+        50% { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: right;"><br><br>
+      <button class="button"><a style="text-decoration: none; font-size: 1.2em; color: ivory;" href="/dashboard">Goto Dashboard</a></button>&nbsp&nbsp
+    </div>
+    <div class="row-centered">
+          <form method="POST">
+              <p> Role change To Manager</p><br><br>
+              <div class="col-xs-3 col-centered">
+                  <select name="users" name="users"  id="users" required class="form-control"> // for loop in html template
+                        <option value="Select" >Select User</option>
+                      {{range .UsersList}}
+                          <option value="{{.UserId}}" >{{ .FirstName}} {{.LastName}}</option>
+                      {{end}}
+                  </select><br><br>
+                <button class="button" type="submit"><a style="text-decoration: none; font-size: 1.2em; color: ivory;" >Role Change</a></button>
+              </div><br><br>
+        </form>
+        {{ if .SuccessUpdated}}
+            <h3 style="text-align: center;color: rgb(41, 133, 13); font-style: italic;">{{.SuccessUpdated}}</h3>
+            <meta http-equiv="refresh" content="5" />
+        {{end}}
+      <p class="blink">{{.SelectMessage}}</p>
+    </div>
+  </body>
+</html>

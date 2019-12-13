@@ -24,7 +24,7 @@ Create keyspace in cassandra DB
 cqlsh> CREATE KEYSPACE userdb WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 Create table in the keyspace created above
 
-cqlsh> CREATE TABLE user_role_details (
+cqlsh> CREATE TABLE userdb.user_role_details (
 user_id text PRIMARY KEY,
 first_name text,
 last_name text,
@@ -35,6 +35,15 @@ manager_id text,
 date_created date,
 date_modified timestamp
 );
+
+CREATE TABLE userdb.messages (
+    msg_id text PRIMARY KEY,
+    date_created timestamp,
+    msg_from text,
+    msg_header text,
+    msg_text text,
+    msg_to text
+)
 
 
 
